@@ -12139,5 +12139,2658 @@
     "evaluated_at_utc": "2026-11-26T07:02:08Z",
     "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
     "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "supertrend_954aa467",
+    "name": "Supertrend (atr_period=7, multiplier=4.0)",
+    "family": "supertrend",
+    "params": {
+      "atr_period": 7,
+      "multiplier": 4.0
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+      "At 10 bps, CAGR=8.7%, Sharpe=0.43, retention=0.94",
+      "Beat B&H on only 16.0% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=11.2%, Sharpe=0.40 < 0.60)",
+      "Beat only 51.0% of same-exposure random entries (need >=75%)",
+      "Beat random median on 2/4 markets (need >=3)"
+    ],
+    "tests_passed_count": 0,
+    "summary": {
+      "mean_return_pct": 64.69,
+      "mean_bh_return_pct": 150.38,
+      "mean_excess_return_pct": -85.7,
+      "mean_cagr_pct": 9.12,
+      "mean_sharpe": 0.461,
+      "mean_bh_sharpe": 0.614,
+      "mean_max_dd_pct": -25.25,
+      "mean_trades": 13.0,
+      "mean_exposure_pct": 51.9,
+      "mean_win_rate_pct": 45.8,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": true,
+      "precheck_reasons": [],
+      "fee_sweep": {
+        "passed": false,
+        "reasons": [
+          "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+          "At 10 bps, CAGR=8.7%, Sharpe=0.43, retention=0.94"
+        ],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 64.69,
+            "mean_cagr_pct": 9.12,
+            "mean_sharpe": 0.461,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": 63.43,
+            "mean_cagr_pct": 8.95,
+            "mean_sharpe": 0.451,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": 61.38,
+            "mean_cagr_pct": 8.66,
+            "mean_sharpe": 0.434,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": 57.33,
+            "mean_cagr_pct": 8.09,
+            "mean_sharpe": 0.4,
+            "beats_bh_count": 0
+          }
+        ],
+        "sharpe_retention_10bps": 0.941
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 95.7,
+        "pct_beat_bh": 16.0,
+        "median_return_pct": 18.7,
+        "worst_return_pct": -8.66,
+        "best_return_pct": 328.27,
+        "passed": false,
+        "reasons": [
+          "Beat B&H on only 16.0% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 47.43,
+        "train_mean_sharpe": 0.486,
+        "unseen_mean_return_pct": 11.16,
+        "unseen_mean_sharpe": 0.395,
+        "sharpe_retention": 0.812,
+        "unseen_beats_bh_count": 2,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": 14.17,
+            "train_sharpe": 0.358,
+            "unseen_return_pct": 11.9,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.422,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": 5.39,
+            "train_sharpe": 0.191,
+            "unseen_return_pct": 9.59,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": 0.35,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 160.73,
+            "train_sharpe": 1.023,
+            "unseen_return_pct": 17.58,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": 0.431,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": 9.44,
+            "train_sharpe": 0.374,
+            "unseen_return_pct": 5.59,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": 0.378,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=11.2%, Sharpe=0.40 < 0.60)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 51.0,
+        "beats_median_count": 2,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": 0.384,
+            "random_p50_sharpe": 0.224,
+            "random_p75_sharpe": 0.451,
+            "random_p95_sharpe": 0.719,
+            "percentile_rank": 67.5
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.273,
+            "random_p50_sharpe": 0.488,
+            "random_p75_sharpe": 0.665,
+            "random_p95_sharpe": 0.94,
+            "percentile_rank": 26.0
+          },
+          "NVDA": {
+            "strategy_sharpe": 0.8,
+            "random_p50_sharpe": 0.649,
+            "random_p75_sharpe": 0.887,
+            "random_p95_sharpe": 1.2,
+            "percentile_rank": 65.5
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.386,
+            "random_p50_sharpe": 0.415,
+            "random_p75_sharpe": 0.632,
+            "random_p95_sharpe": 0.932,
+            "percentile_rank": 45.0
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 51.0% of same-exposure random entries (need >=75%)",
+          "Beat random median on 2/4 markets (need >=3)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": 27.76,
+        "bh_return_pct": 45.99,
+        "excess_return_pct": -18.23,
+        "cagr_pct": 5.13,
+        "bh_cagr_pct": 8.03,
+        "sharpe": 0.384,
+        "bh_sharpe": 0.398,
+        "max_drawdown_pct": -22.92,
+        "bh_max_drawdown_pct": -37.44,
+        "trades": 11,
+        "exposure_pct": 48.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 45.5,
+        "profit_factor": 1.92,
+        "avg_hold_days": 54.4,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 17.28,
+        "bh_return_pct": 100.71,
+        "excess_return_pct": -83.43,
+        "cagr_pct": 3.31,
+        "bh_cagr_pct": 15.29,
+        "sharpe": 0.273,
+        "bh_sharpe": 0.634,
+        "max_drawdown_pct": -22.68,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 16,
+        "exposure_pct": 53.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 50.0,
+        "profit_factor": 1.43,
+        "avg_hold_days": 41.2,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 197.51,
+        "bh_return_pct": 403.17,
+        "excess_return_pct": -205.66,
+        "cagr_pct": 24.94,
+        "bh_cagr_pct": 39.09,
+        "sharpe": 0.8,
+        "bh_sharpe": 0.861,
+        "max_drawdown_pct": -35.85,
+        "bh_max_drawdown_pct": -63.72,
+        "trades": 12,
+        "exposure_pct": 54.3,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 41.7,
+        "profit_factor": 3.56,
+        "avg_hold_days": 55.8,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 16.19,
+        "bh_return_pct": 51.67,
+        "excess_return_pct": -35.47,
+        "cagr_pct": 3.11,
+        "bh_cagr_pct": 8.88,
+        "sharpe": 0.386,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": -19.53,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 13,
+        "exposure_pct": 51.4,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 46.2,
+        "profit_factor": 1.6,
+        "avg_hold_days": 48.8,
+        "start_idx": 20,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "adx_dmi_9b2bab36",
+    "name": "ADX / DMI (period=10, adx_threshold=25)",
+    "family": "adx_dmi",
+    "params": {
+      "period": 10,
+      "adx_threshold": 25
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "At 2 bps, beat B&H on only 1/4 markets (need >=2)",
+      "At 10 bps, CAGR=8.0%, Sharpe=0.39, retention=0.81",
+      "Beat B&H on only 21.3% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=6.5%, Sharpe=0.36 < 0.60)",
+      "Beat only 61.2% of same-exposure random entries (need >=75%)",
+      "Beat random median on 2/4 markets (need >=3)"
+    ],
+    "tests_passed_count": 0,
+    "summary": {
+      "mean_return_pct": 71.73,
+      "mean_bh_return_pct": 150.38,
+      "mean_excess_return_pct": -78.65,
+      "mean_cagr_pct": 9.06,
+      "mean_sharpe": 0.477,
+      "mean_bh_sharpe": 0.614,
+      "mean_max_dd_pct": -19.33,
+      "mean_trades": 31.8,
+      "mean_exposure_pct": 33.6,
+      "mean_win_rate_pct": 46.7,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": true,
+      "precheck_reasons": [],
+      "fee_sweep": {
+        "passed": false,
+        "reasons": [
+          "At 2 bps, beat B&H on only 1/4 markets (need >=2)",
+          "At 10 bps, CAGR=8.0%, Sharpe=0.39, retention=0.81"
+        ],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 71.73,
+            "mean_cagr_pct": 9.06,
+            "mean_sharpe": 0.477,
+            "beats_bh_count": 1
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": 68.69,
+            "mean_cagr_pct": 8.64,
+            "mean_sharpe": 0.444,
+            "beats_bh_count": 1
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": 63.75,
+            "mean_cagr_pct": 7.95,
+            "mean_sharpe": 0.388,
+            "beats_bh_count": 1
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": 54.3,
+            "mean_cagr_pct": 6.57,
+            "mean_sharpe": 0.278,
+            "beats_bh_count": 1
+          }
+        ],
+        "sharpe_retention_10bps": 0.813
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 86.2,
+        "pct_beat_bh": 21.3,
+        "median_return_pct": 12.24,
+        "worst_return_pct": -13.58,
+        "best_return_pct": 254.66,
+        "passed": false,
+        "reasons": [
+          "Beat B&H on only 21.3% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 59.16,
+        "train_mean_sharpe": 0.518,
+        "unseen_mean_return_pct": 6.47,
+        "unseen_mean_sharpe": 0.365,
+        "sharpe_retention": 0.705,
+        "unseen_beats_bh_count": 2,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": -5.53,
+            "train_sharpe": -0.108,
+            "unseen_return_pct": 10.15,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.405,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": 22.18,
+            "train_sharpe": 0.558,
+            "unseen_return_pct": -3.25,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": -0.049,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 213.32,
+            "train_sharpe": 1.3,
+            "unseen_return_pct": 11.81,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": 0.464,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": 6.68,
+            "train_sharpe": 0.322,
+            "unseen_return_pct": 7.17,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": 0.64,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=6.5%, Sharpe=0.36 < 0.60)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 61.2,
+        "beats_median_count": 2,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": 0.128,
+            "random_p50_sharpe": 0.194,
+            "random_p75_sharpe": 0.422,
+            "random_p95_sharpe": 0.744,
+            "percentile_rank": 45.5
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.313,
+            "random_p50_sharpe": 0.364,
+            "random_p75_sharpe": 0.558,
+            "random_p95_sharpe": 0.897,
+            "percentile_rank": 42.5
+          },
+          "NVDA": {
+            "strategy_sharpe": 1.043,
+            "random_p50_sharpe": 0.452,
+            "random_p75_sharpe": 0.719,
+            "random_p95_sharpe": 1.106,
+            "percentile_rank": 92.5
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.423,
+            "random_p50_sharpe": 0.272,
+            "random_p75_sharpe": 0.512,
+            "random_p95_sharpe": 0.843,
+            "percentile_rank": 64.5
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 61.2% of same-exposure random entries (need >=75%)",
+          "Beat random median on 2/4 markets (need >=3)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": 4.06,
+        "bh_return_pct": 45.99,
+        "excess_return_pct": -41.93,
+        "cagr_pct": 0.82,
+        "bh_cagr_pct": 8.03,
+        "sharpe": 0.128,
+        "bh_sharpe": 0.398,
+        "max_drawdown_pct": -20.47,
+        "bh_max_drawdown_pct": -37.44,
+        "trades": 33,
+        "exposure_pct": 30.1,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 42.4,
+        "profit_factor": 1.15,
+        "avg_hold_days": 11.2,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 18.21,
+        "bh_return_pct": 100.71,
+        "excess_return_pct": -82.5,
+        "cagr_pct": 3.48,
+        "bh_cagr_pct": 15.29,
+        "sharpe": 0.313,
+        "bh_sharpe": 0.634,
+        "max_drawdown_pct": -13.9,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 32,
+        "exposure_pct": 36.3,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 50.0,
+        "profit_factor": 1.52,
+        "avg_hold_days": 14.0,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 250.33,
+        "bh_return_pct": 403.17,
+        "excess_return_pct": -152.84,
+        "cagr_pct": 29.18,
+        "bh_cagr_pct": 39.09,
+        "sharpe": 1.043,
+        "bh_sharpe": 0.861,
+        "max_drawdown_pct": -24.96,
+        "bh_max_drawdown_pct": -63.72,
+        "trades": 26,
+        "exposure_pct": 34.4,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": true,
+        "win_rate_pct": 50.0,
+        "profit_factor": 4.43,
+        "avg_hold_days": 16.3,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 14.33,
+        "bh_return_pct": 51.67,
+        "excess_return_pct": -37.34,
+        "cagr_pct": 2.77,
+        "bh_cagr_pct": 8.88,
+        "sharpe": 0.423,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": -18.0,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 36,
+        "exposure_pct": 33.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 44.4,
+        "profit_factor": 1.54,
+        "avg_hold_days": 11.5,
+        "start_idx": 20,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "sma_cross_e2cf7e64",
+    "name": "SMA Cross (fast=8, slow=100)",
+    "family": "sma_cross",
+    "params": {
+      "fast": 8,
+      "slow": 100
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "Beat B&H on only 25.0% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=8.7%, Sharpe=0.40 < 0.60)",
+      "OOS/IS Sharpe retention 0.44 < 0.50",
+      "Unseen beat B&H Sharpe on 1/4 markets (need >=2)",
+      "Beat only 62.8% of same-exposure random entries (need >=75%)"
+    ],
+    "tests_passed_count": 1,
+    "summary": {
+      "mean_return_pct": 143.75,
+      "mean_bh_return_pct": 206.88,
+      "mean_excess_return_pct": -63.13,
+      "mean_cagr_pct": 17.25,
+      "mean_sharpe": 0.727,
+      "mean_bh_sharpe": 0.774,
+      "mean_max_dd_pct": -23.65,
+      "mean_trades": 11.0,
+      "mean_exposure_pct": 66.9,
+      "mean_win_rate_pct": 40.8,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": true,
+      "precheck_reasons": [],
+      "fee_sweep": {
+        "passed": true,
+        "reasons": [],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 143.75,
+            "mean_cagr_pct": 17.25,
+            "mean_sharpe": 0.727,
+            "beats_bh_count": 2
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": 142.02,
+            "mean_cagr_pct": 17.08,
+            "mean_sharpe": 0.72,
+            "beats_bh_count": 2
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": 139.18,
+            "mean_cagr_pct": 16.79,
+            "mean_sharpe": 0.708,
+            "beats_bh_count": 2
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": 133.59,
+            "mean_cagr_pct": 16.22,
+            "mean_sharpe": 0.683,
+            "beats_bh_count": 1
+          }
+        ],
+        "sharpe_retention_10bps": 0.974
+      },
+      "rolling_starts": {
+        "windows_tested": 172,
+        "pct_positive": 85.5,
+        "pct_beat_bh": 25.0,
+        "median_return_pct": 36.65,
+        "worst_return_pct": -21.48,
+        "best_return_pct": 484.95,
+        "passed": false,
+        "reasons": [
+          "Beat B&H on only 25.0% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 155.84,
+        "train_mean_sharpe": 0.915,
+        "unseen_mean_return_pct": 8.71,
+        "unseen_mean_sharpe": 0.398,
+        "sharpe_retention": 0.435,
+        "unseen_beats_bh_count": 1,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": 31.97,
+            "train_sharpe": 0.704,
+            "unseen_return_pct": 4.58,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.219,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": 11.69,
+            "train_sharpe": 0.334,
+            "unseen_return_pct": 28.22,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": 0.713,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 556.87,
+            "train_sharpe": 1.856,
+            "unseen_return_pct": -14.0,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": -0.058,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": 22.85,
+            "train_sharpe": 0.768,
+            "unseen_return_pct": 16.05,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": 0.72,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=8.7%, Sharpe=0.40 < 0.60)",
+          "OOS/IS Sharpe retention 0.44 < 0.50",
+          "Unseen beat B&H Sharpe on 1/4 markets (need >=2)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 62.8,
+        "beats_median_count": 3,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": 0.498,
+            "random_p50_sharpe": 0.446,
+            "random_p75_sharpe": 0.607,
+            "random_p95_sharpe": 0.83,
+            "percentile_rank": 58.0
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.53,
+            "random_p50_sharpe": 0.605,
+            "random_p75_sharpe": 0.785,
+            "random_p95_sharpe": 1.01,
+            "percentile_rank": 41.0
+          },
+          "NVDA": {
+            "strategy_sharpe": 1.124,
+            "random_p50_sharpe": 0.935,
+            "random_p75_sharpe": 1.089,
+            "random_p95_sharpe": 1.246,
+            "percentile_rank": 82.0
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.757,
+            "random_p50_sharpe": 0.629,
+            "random_p75_sharpe": 0.791,
+            "random_p95_sharpe": 0.957,
+            "percentile_rank": 70.0
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 62.8% of same-exposure random entries (need >=75%)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": 38.01,
+        "bh_return_pct": 69.7,
+        "excess_return_pct": -31.7,
+        "cagr_pct": 7.29,
+        "bh_cagr_pct": 12.24,
+        "sharpe": 0.498,
+        "bh_sharpe": 0.57,
+        "max_drawdown_pct": -23.27,
+        "bh_max_drawdown_pct": -34.91,
+        "trades": 11,
+        "exposure_pct": 55.1,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 36.4,
+        "profit_factor": 2.42,
+        "avg_hold_days": 57.7,
+        "start_idx": 100,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 45.42,
+        "bh_return_pct": 110.43,
+        "excess_return_pct": -65.01,
+        "cagr_pct": 8.52,
+        "bh_cagr_pct": 17.64,
+        "sharpe": 0.53,
+        "bh_sharpe": 0.732,
+        "max_drawdown_pct": -24.14,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 12,
+        "exposure_pct": 64.1,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 33.3,
+        "profit_factor": 2.16,
+        "avg_hold_days": 61.6,
+        "start_idx": 100,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 448.22,
+        "bh_return_pct": 587.46,
+        "excess_return_pct": -139.24,
+        "cagr_pct": 45.0,
+        "bh_cagr_pct": 52.35,
+        "sharpe": 1.124,
+        "bh_sharpe": 1.083,
+        "max_drawdown_pct": -33.16,
+        "bh_max_drawdown_pct": -47.53,
+        "trades": 13,
+        "exposure_pct": 72.7,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": true,
+        "win_rate_pct": 30.8,
+        "profit_factor": 7.58,
+        "avg_hold_days": 64.5,
+        "start_idx": 100,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 43.36,
+        "bh_return_pct": 59.94,
+        "excess_return_pct": -16.58,
+        "cagr_pct": 8.18,
+        "bh_cagr_pct": 10.8,
+        "sharpe": 0.757,
+        "bh_sharpe": 0.711,
+        "max_drawdown_pct": -14.02,
+        "bh_max_drawdown_pct": -18.9,
+        "trades": 8,
+        "exposure_pct": 75.6,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": true,
+        "win_rate_pct": 62.5,
+        "profit_factor": 4.83,
+        "avg_hold_days": 109.0,
+        "start_idx": 100,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "turn_of_month_2e2fc4ff",
+    "name": "Turn-of-Month (days_before_eom=1, days_into_bom=2)",
+    "family": "turn_of_month",
+    "params": {
+      "days_before_eom": 1,
+      "days_into_bom": 2
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "Exposure out of bounds (9.0%, require 10%..92%)",
+      "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+      "At 10 bps, CAGR=-1.9%, Sharpe=-0.18, retention=-4.46",
+      "At 20 bps, mean return -19.0% <= 0%",
+      "Only 48.4% rolling starts positive (need >=65%)",
+      "Beat B&H on only 17.6% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=10.3%, Sharpe=0.52 < 0.60)",
+      "OOS/IS Sharpe retention 0.00 < 0.50",
+      "Beat only 43.6% of same-exposure random entries (need >=75%)",
+      "Beat random median on 2/4 markets (need >=3)"
+    ],
+    "tests_passed_count": 0,
+    "summary": {
+      "mean_return_pct": 0.18,
+      "mean_bh_return_pct": 150.38,
+      "mean_excess_return_pct": -150.21,
+      "mean_cagr_pct": -0.0,
+      "mean_sharpe": 0.041,
+      "mean_bh_sharpe": 0.614,
+      "mean_max_dd_pct": -24.85,
+      "mean_trades": 59.0,
+      "mean_exposure_pct": 9.0,
+      "mean_win_rate_pct": 52.5,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": false,
+      "precheck_reasons": [
+        "Exposure out of bounds (9.0%, require 10%..92%)"
+      ],
+      "fee_sweep": {
+        "passed": false,
+        "reasons": [
+          "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+          "At 10 bps, CAGR=-1.9%, Sharpe=-0.18, retention=-4.46",
+          "At 20 bps, mean return -19.0% <= 0%"
+        ],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 0.18,
+            "mean_cagr_pct": -0.0,
+            "mean_sharpe": 0.041,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": -3.31,
+            "mean_cagr_pct": -0.72,
+            "mean_sharpe": -0.044,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": -8.85,
+            "mean_cagr_pct": -1.91,
+            "mean_sharpe": -0.183,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": -19.0,
+            "mean_cagr_pct": -4.25,
+            "mean_sharpe": -0.458,
+            "beats_bh_count": 0
+          }
+        ],
+        "sharpe_retention_10bps": -4.463
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 48.4,
+        "pct_beat_bh": 17.6,
+        "median_return_pct": -0.32,
+        "worst_return_pct": -15.79,
+        "best_return_pct": 33.29,
+        "passed": false,
+        "reasons": [
+          "Only 48.4% rolling starts positive (need >=65%)",
+          "Beat B&H on only 17.6% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": -8.59,
+        "train_mean_sharpe": -0.221,
+        "unseen_mean_return_pct": 10.28,
+        "unseen_mean_sharpe": 0.523,
+        "sharpe_retention": 0.0,
+        "unseen_beats_bh_count": 2,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": -9.46,
+            "train_sharpe": -0.366,
+            "unseen_return_pct": -1.62,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": -0.051,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": -3.04,
+            "train_sharpe": -0.04,
+            "unseen_return_pct": 6.32,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": 0.341,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": -19.03,
+            "train_sharpe": -0.33,
+            "unseen_return_pct": 30.68,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": 1.141,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": -2.84,
+            "train_sharpe": -0.148,
+            "unseen_return_pct": 5.74,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": 0.662,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=10.3%, Sharpe=0.52 < 0.60)",
+          "OOS/IS Sharpe retention 0.00 < 0.50"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 43.6,
+        "beats_median_count": 2,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": -0.235,
+            "random_p50_sharpe": 0.033,
+            "random_p75_sharpe": 0.335,
+            "random_p95_sharpe": 0.648,
+            "percentile_rank": 30.5
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.112,
+            "random_p50_sharpe": 0.107,
+            "random_p75_sharpe": 0.343,
+            "random_p95_sharpe": 0.806,
+            "percentile_rank": 50.0
+          },
+          "NVDA": {
+            "strategy_sharpe": 0.153,
+            "random_p50_sharpe": 0.24,
+            "random_p75_sharpe": 0.512,
+            "random_p95_sharpe": 0.935,
+            "percentile_rank": 42.0
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.133,
+            "random_p50_sharpe": 0.095,
+            "random_p75_sharpe": 0.363,
+            "random_p95_sharpe": 0.714,
+            "percentile_rank": 52.0
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 43.6% of same-exposure random entries (need >=75%)",
+          "Beat random median on 2/4 markets (need >=3)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": -10.93,
+        "bh_return_pct": 45.99,
+        "excess_return_pct": -56.92,
+        "cagr_pct": -2.34,
+        "bh_cagr_pct": 8.03,
+        "sharpe": -0.235,
+        "bh_sharpe": 0.398,
+        "max_drawdown_pct": -25.02,
+        "bh_max_drawdown_pct": -37.44,
+        "trades": 59,
+        "exposure_pct": 9.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 49.2,
+        "profit_factor": 0.84,
+        "avg_hold_days": 1.9,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 3.09,
+        "bh_return_pct": 100.71,
+        "excess_return_pct": -97.62,
+        "cagr_pct": 0.62,
+        "bh_cagr_pct": 15.29,
+        "sharpe": 0.112,
+        "bh_sharpe": 0.634,
+        "max_drawdown_pct": -26.37,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 59,
+        "exposure_pct": 9.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 50.8,
+        "profit_factor": 1.1,
+        "avg_hold_days": 1.9,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 5.81,
+        "bh_return_pct": 403.17,
+        "excess_return_pct": -397.36,
+        "cagr_pct": 1.16,
+        "bh_cagr_pct": 39.09,
+        "sharpe": 0.153,
+        "bh_sharpe": 0.861,
+        "max_drawdown_pct": -33.15,
+        "bh_max_drawdown_pct": -63.72,
+        "trades": 59,
+        "exposure_pct": 9.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 50.8,
+        "profit_factor": 1.14,
+        "avg_hold_days": 1.9,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 2.74,
+        "bh_return_pct": 51.67,
+        "excess_return_pct": -48.93,
+        "cagr_pct": 0.55,
+        "bh_cagr_pct": 8.88,
+        "sharpe": 0.133,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": -14.85,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 59,
+        "exposure_pct": 9.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 59.3,
+        "profit_factor": 1.12,
+        "avg_hold_days": 1.9,
+        "start_idx": 20,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "turn_of_month_155d37c6",
+    "name": "Turn-of-Month (days_before_eom=3, days_into_bom=6)",
+    "family": "turn_of_month",
+    "params": {
+      "days_before_eom": 3,
+      "days_into_bom": 6
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+      "At 10 bps, CAGR=-2.6%, Sharpe=-0.07, retention=-1.46",
+      "At 20 bps, mean return -20.7% <= 0%",
+      "Only 59.6% rolling starts positive (need >=65%)",
+      "Beat B&H on only 9.0% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=-8.1%, Sharpe=-0.14 < 0.60)",
+      "OOS/IS Sharpe retention -0.81 < 0.50",
+      "Unseen beat B&H Sharpe on 0/4 markets (need >=2)",
+      "Beat only 23.6% of same-exposure random entries (need >=75%)",
+      "Beat random median on 0/4 markets (need >=3)"
+    ],
+    "tests_passed_count": 0,
+    "summary": {
+      "mean_return_pct": -1.88,
+      "mean_bh_return_pct": 150.38,
+      "mean_excess_return_pct": -152.27,
+      "mean_cagr_pct": -0.68,
+      "mean_sharpe": 0.048,
+      "mean_bh_sharpe": 0.614,
+      "mean_max_dd_pct": -35.2,
+      "mean_trades": 59.0,
+      "mean_exposure_pct": 36.5,
+      "mean_win_rate_pct": 52.1,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": true,
+      "precheck_reasons": [],
+      "fee_sweep": {
+        "passed": false,
+        "reasons": [
+          "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+          "At 10 bps, CAGR=-2.6%, Sharpe=-0.07, retention=-1.46",
+          "At 20 bps, mean return -20.7% <= 0%"
+        ],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": -1.88,
+            "mean_cagr_pct": -0.68,
+            "mean_sharpe": 0.048,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": -5.3,
+            "mean_cagr_pct": -1.39,
+            "mean_sharpe": 0.004,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": -10.72,
+            "mean_cagr_pct": -2.57,
+            "mean_sharpe": -0.07,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": -20.66,
+            "mean_cagr_pct": -4.89,
+            "mean_sharpe": -0.216,
+            "beats_bh_count": 0
+          }
+        ],
+        "sharpe_retention_10bps": -1.458
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 59.6,
+        "pct_beat_bh": 9.0,
+        "median_return_pct": 2.81,
+        "worst_return_pct": -34.5,
+        "best_return_pct": 112.67,
+        "passed": false,
+        "reasons": [
+          "Only 59.6% rolling starts positive (need >=65%)",
+          "Beat B&H on only 9.0% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 7.13,
+        "train_mean_sharpe": 0.17,
+        "unseen_mean_return_pct": -8.09,
+        "unseen_mean_sharpe": -0.137,
+        "sharpe_retention": -0.81,
+        "unseen_beats_bh_count": 0,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": -11.2,
+            "train_sharpe": -0.162,
+            "unseen_return_pct": 6.56,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.269,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": -7.42,
+            "train_sharpe": -0.073,
+            "unseen_return_pct": -23.51,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": -0.624,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 34.77,
+            "train_sharpe": 0.484,
+            "unseen_return_pct": -12.49,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": -0.102,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": 12.35,
+            "train_sharpe": 0.43,
+            "unseen_return_pct": -2.91,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": -0.093,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=-8.1%, Sharpe=-0.14 < 0.60)",
+          "OOS/IS Sharpe retention -0.81 < 0.50",
+          "Unseen beat B&H Sharpe on 0/4 markets (need >=2)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 23.6,
+        "beats_median_count": 0,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": 0.019,
+            "random_p50_sharpe": 0.222,
+            "random_p75_sharpe": 0.424,
+            "random_p95_sharpe": 0.696,
+            "percentile_rank": 29.0
+          },
+          "AAPL": {
+            "strategy_sharpe": -0.311,
+            "random_p50_sharpe": 0.353,
+            "random_p75_sharpe": 0.558,
+            "random_p95_sharpe": 0.916,
+            "percentile_rank": 3.0
+          },
+          "NVDA": {
+            "strategy_sharpe": 0.263,
+            "random_p50_sharpe": 0.577,
+            "random_p75_sharpe": 0.825,
+            "random_p95_sharpe": 1.09,
+            "percentile_rank": 19.5
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.222,
+            "random_p50_sharpe": 0.278,
+            "random_p75_sharpe": 0.513,
+            "random_p95_sharpe": 0.794,
+            "percentile_rank": 43.0
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 23.6% of same-exposure random entries (need >=75%)",
+          "Beat random median on 0/4 markets (need >=3)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": -5.37,
+        "bh_return_pct": 45.99,
+        "excess_return_pct": -51.36,
+        "cagr_pct": -1.12,
+        "bh_cagr_pct": 8.03,
+        "sharpe": 0.019,
+        "bh_sharpe": 0.398,
+        "max_drawdown_pct": -25.79,
+        "bh_max_drawdown_pct": -37.44,
+        "trades": 59,
+        "exposure_pct": 36.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 49.2,
+        "profit_factor": 1.01,
+        "avg_hold_days": 7.6,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": -29.19,
+        "bh_return_pct": 100.71,
+        "excess_return_pct": -129.9,
+        "cagr_pct": -6.81,
+        "bh_cagr_pct": 15.29,
+        "sharpe": -0.311,
+        "bh_sharpe": 0.634,
+        "max_drawdown_pct": -45.11,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 59,
+        "exposure_pct": 36.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 45.8,
+        "profit_factor": 0.81,
+        "avg_hold_days": 7.6,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 17.94,
+        "bh_return_pct": 403.17,
+        "excess_return_pct": -385.23,
+        "cagr_pct": 3.43,
+        "bh_cagr_pct": 39.09,
+        "sharpe": 0.263,
+        "bh_sharpe": 0.861,
+        "max_drawdown_pct": -49.36,
+        "bh_max_drawdown_pct": -63.72,
+        "trades": 59,
+        "exposure_pct": 36.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 55.9,
+        "profit_factor": 1.21,
+        "avg_hold_days": 7.6,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 9.09,
+        "bh_return_pct": 51.67,
+        "excess_return_pct": -42.58,
+        "cagr_pct": 1.79,
+        "bh_cagr_pct": 8.88,
+        "sharpe": 0.222,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": -20.53,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 59,
+        "exposure_pct": 36.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 57.6,
+        "profit_factor": 1.21,
+        "avg_hold_days": 7.6,
+        "start_idx": 20,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "parabolic_sar_a19f4777",
+    "name": "Parabolic SAR (af_start=0.03, af_step=0.03, af_max=0.25)",
+    "family": "parabolic_sar",
+    "params": {
+      "af_start": 0.03,
+      "af_step": 0.03,
+      "af_max": 0.25
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+      "At 10 bps, CAGR=-0.3%, Sharpe=0.05, retention=0.28",
+      "At 20 bps, mean return -14.3% <= 0%",
+      "Beat B&H on only 15.4% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=-2.5%, Sharpe=0.05 < 0.60)",
+      "OOS/IS Sharpe retention 0.19 < 0.50",
+      "Unseen beat B&H Sharpe on 1/4 markets (need >=2)",
+      "Beat only 23.2% of same-exposure random entries (need >=75%)",
+      "Beat random median on 0/4 markets (need >=3)"
+    ],
+    "tests_passed_count": 0,
+    "summary": {
+      "mean_return_pct": 11.71,
+      "mean_bh_return_pct": 150.38,
+      "mean_excess_return_pct": -138.68,
+      "mean_cagr_pct": 2.15,
+      "mean_sharpe": 0.184,
+      "mean_bh_sharpe": 0.614,
+      "mean_max_dd_pct": -35.47,
+      "mean_trades": 73.8,
+      "mean_exposure_pct": 56.1,
+      "mean_win_rate_pct": 43.1,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": true,
+      "precheck_reasons": [],
+      "fee_sweep": {
+        "passed": false,
+        "reasons": [
+          "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+          "At 10 bps, CAGR=-0.3%, Sharpe=0.05, retention=0.28",
+          "At 20 bps, mean return -14.3% <= 0%"
+        ],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 11.71,
+            "mean_cagr_pct": 2.15,
+            "mean_sharpe": 0.184,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": 6.88,
+            "mean_cagr_pct": 1.23,
+            "mean_sharpe": 0.135,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": -0.7,
+            "mean_cagr_pct": -0.28,
+            "mean_sharpe": 0.051,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": -14.29,
+            "mean_cagr_pct": -3.24,
+            "mean_sharpe": -0.114,
+            "beats_bh_count": 0
+          }
+        ],
+        "sharpe_retention_10bps": 0.277
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 73.9,
+        "pct_beat_bh": 15.4,
+        "median_return_pct": 16.54,
+        "worst_return_pct": -49.12,
+        "best_return_pct": 140.58,
+        "passed": false,
+        "reasons": [
+          "Beat B&H on only 15.4% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 22.17,
+        "train_mean_sharpe": 0.238,
+        "unseen_mean_return_pct": -2.5,
+        "unseen_mean_sharpe": 0.045,
+        "sharpe_retention": 0.189,
+        "unseen_beats_bh_count": 1,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": -6.09,
+            "train_sharpe": -0.01,
+            "unseen_return_pct": 17.24,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.489,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": 12.81,
+            "train_sharpe": 0.314,
+            "unseen_return_pct": 14.23,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": 0.466,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 86.41,
+            "train_sharpe": 0.723,
+            "unseen_return_pct": -37.05,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": -0.591,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": -4.46,
+            "train_sharpe": -0.075,
+            "unseen_return_pct": -4.43,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": -0.184,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=-2.5%, Sharpe=0.05 < 0.60)",
+          "OOS/IS Sharpe retention 0.19 < 0.50",
+          "Unseen beat B&H Sharpe on 1/4 markets (need >=2)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 23.2,
+        "beats_median_count": 0,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": 0.205,
+            "random_p50_sharpe": 0.264,
+            "random_p75_sharpe": 0.461,
+            "random_p95_sharpe": 0.716,
+            "percentile_rank": 42.5
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.39,
+            "random_p50_sharpe": 0.465,
+            "random_p75_sharpe": 0.643,
+            "random_p95_sharpe": 0.883,
+            "percentile_rank": 39.0
+          },
+          "NVDA": {
+            "strategy_sharpe": 0.256,
+            "random_p50_sharpe": 0.649,
+            "random_p75_sharpe": 0.876,
+            "random_p95_sharpe": 1.144,
+            "percentile_rank": 8.5
+          },
+          "^GSPC": {
+            "strategy_sharpe": -0.114,
+            "random_p50_sharpe": 0.334,
+            "random_p75_sharpe": 0.571,
+            "random_p95_sharpe": 0.795,
+            "percentile_rank": 3.0
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 23.2% of same-exposure random entries (need >=75%)",
+          "Beat random median on 0/4 markets (need >=3)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": 10.83,
+        "bh_return_pct": 45.99,
+        "excess_return_pct": -35.16,
+        "cagr_pct": 2.12,
+        "bh_cagr_pct": 8.03,
+        "sharpe": 0.205,
+        "bh_sharpe": 0.398,
+        "max_drawdown_pct": -35.69,
+        "bh_max_drawdown_pct": -37.44,
+        "trades": 73,
+        "exposure_pct": 55.1,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 42.5,
+        "profit_factor": 1.14,
+        "avg_hold_days": 9.3,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 30.86,
+        "bh_return_pct": 100.71,
+        "excess_return_pct": -69.85,
+        "cagr_pct": 5.65,
+        "bh_cagr_pct": 15.29,
+        "sharpe": 0.39,
+        "bh_sharpe": 0.634,
+        "max_drawdown_pct": -22.92,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 71,
+        "exposure_pct": 54.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 45.1,
+        "profit_factor": 1.3,
+        "avg_hold_days": 9.5,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 13.83,
+        "bh_return_pct": 403.17,
+        "excess_return_pct": -389.34,
+        "cagr_pct": 2.68,
+        "bh_cagr_pct": 39.09,
+        "sharpe": 0.256,
+        "bh_sharpe": 0.861,
+        "max_drawdown_pct": -55.9,
+        "bh_max_drawdown_pct": -63.72,
+        "trades": 76,
+        "exposure_pct": 56.2,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 40.8,
+        "profit_factor": 1.2,
+        "avg_hold_days": 9.1,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": -8.69,
+        "bh_return_pct": 51.67,
+        "excess_return_pct": -60.36,
+        "cagr_pct": -1.84,
+        "bh_cagr_pct": 8.88,
+        "sharpe": -0.114,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": -27.39,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 75,
+        "exposure_pct": 58.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 44.0,
+        "profit_factor": 0.94,
+        "avg_hold_days": 9.6,
+        "start_idx": 20,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "rsi_reversion_901cd195",
+    "name": "RSI Reversion (period=21, oversold=35, overbought=80)",
+    "family": "rsi_reversion",
+    "params": {
+      "period": 21,
+      "oversold": 35,
+      "overbought": 80
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "Too few trades (mean=1.2 < 10 or min_mkt=1 < 6)",
+      "Unseen beat B&H Sharpe on 1/4 markets (need >=2)"
+    ],
+    "tests_passed_count": 0,
+    "summary": {
+      "mean_return_pct": 120.85,
+      "mean_bh_return_pct": 146.15,
+      "mean_excess_return_pct": -25.3,
+      "mean_cagr_pct": 16.87,
+      "mean_sharpe": 0.698,
+      "mean_bh_sharpe": 0.619,
+      "mean_max_dd_pct": -37.98,
+      "mean_trades": 1.2,
+      "mean_exposure_pct": 85.6,
+      "mean_win_rate_pct": 100.0,
+      "beats_bh_markets": 3
+    },
+    "stress_tests": {
+      "precheck_passed": false,
+      "precheck_reasons": [
+        "Too few trades (mean=1.2 < 10 or min_mkt=1 < 6)"
+      ],
+      "fee_sweep": {
+        "passed": true,
+        "reasons": [],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 120.85,
+            "mean_cagr_pct": 16.87,
+            "mean_sharpe": 0.698,
+            "beats_bh_count": 3
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": 120.67,
+            "mean_cagr_pct": 16.85,
+            "mean_sharpe": 0.698,
+            "beats_bh_count": 3
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": 120.38,
+            "mean_cagr_pct": 16.82,
+            "mean_sharpe": 0.697,
+            "beats_bh_count": 3
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": 119.79,
+            "mean_cagr_pct": 16.75,
+            "mean_sharpe": 0.696,
+            "beats_bh_count": 3
+          }
+        ],
+        "sharpe_retention_10bps": 0.999
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 94.7,
+        "pct_beat_bh": 62.8,
+        "median_return_pct": 70.64,
+        "worst_return_pct": -24.92,
+        "best_return_pct": 457.25,
+        "passed": true,
+        "reasons": []
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 53.99,
+        "train_mean_sharpe": 0.71,
+        "unseen_mean_return_pct": 39.84,
+        "unseen_mean_sharpe": 0.677,
+        "sharpe_retention": 0.955,
+        "unseen_beats_bh_count": 1,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": 35.34,
+            "train_sharpe": 0.518,
+            "unseen_return_pct": 16.72,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.409,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": 66.25,
+            "train_sharpe": 0.933,
+            "unseen_return_pct": 52.33,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": 0.874,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 76.77,
+            "train_sharpe": 0.666,
+            "unseen_return_pct": 70.64,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": 0.812,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": 37.61,
+            "train_sharpe": 0.721,
+            "unseen_return_pct": 19.66,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": 0.614,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen beat B&H Sharpe on 1/4 markets (need >=2)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 83.4,
+        "beats_median_count": 3,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": 0.476,
+            "random_p50_sharpe": 0.394,
+            "random_p75_sharpe": 0.441,
+            "random_p95_sharpe": 0.501,
+            "percentile_rank": 88.0
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.906,
+            "random_p50_sharpe": 0.605,
+            "random_p75_sharpe": 0.727,
+            "random_p95_sharpe": 0.84,
+            "percentile_rank": 97.5
+          },
+          "NVDA": {
+            "strategy_sharpe": 0.727,
+            "random_p50_sharpe": 0.737,
+            "random_p75_sharpe": 0.919,
+            "random_p95_sharpe": 1.157,
+            "percentile_rank": 49.5
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.684,
+            "random_p50_sharpe": 0.542,
+            "random_p75_sharpe": 0.58,
+            "random_p95_sharpe": 0.638,
+            "percentile_rank": 98.5
+          }
+        },
+        "passed": true,
+        "reasons": []
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": 59.01,
+        "bh_return_pct": 43.49,
+        "excess_return_pct": 15.52,
+        "cagr_pct": 9.95,
+        "bh_cagr_pct": 7.67,
+        "sharpe": 0.476,
+        "bh_sharpe": 0.4,
+        "max_drawdown_pct": -34.91,
+        "bh_max_drawdown_pct": -37.34,
+        "trades": 1,
+        "exposure_pct": 98.5,
+        "beats_bh_return": true,
+        "beats_bh_sharpe": true,
+        "win_rate_pct": 100.0,
+        "profit_factor": 99.0,
+        "avg_hold_days": 1213.0,
+        "start_idx": 22,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 157.17,
+        "bh_return_pct": 98.2,
+        "excess_return_pct": 58.97,
+        "cagr_pct": 21.31,
+        "bh_cagr_pct": 15.02,
+        "sharpe": 0.906,
+        "bh_sharpe": 0.639,
+        "max_drawdown_pct": -33.43,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 1,
+        "exposure_pct": 84.6,
+        "beats_bh_return": true,
+        "beats_bh_sharpe": true,
+        "win_rate_pct": 100.0,
+        "profit_factor": 99.0,
+        "avg_hold_days": 1041.0,
+        "start_idx": 22,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 201.63,
+        "bh_return_pct": 392.98,
+        "excess_return_pct": -191.35,
+        "cagr_pct": 25.34,
+        "bh_cagr_pct": 38.58,
+        "sharpe": 0.727,
+        "bh_sharpe": 0.874,
+        "max_drawdown_pct": -60.82,
+        "bh_max_drawdown_pct": -62.73,
+        "trades": 2,
+        "exposure_pct": 61.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 100.0,
+        "profit_factor": 99.0,
+        "avg_hold_days": 375.5,
+        "start_idx": 22,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 65.58,
+        "bh_return_pct": 49.94,
+        "excess_return_pct": 15.64,
+        "cagr_pct": 10.87,
+        "bh_cagr_pct": 8.64,
+        "sharpe": 0.684,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": -22.77,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 1,
+        "exposure_pct": 98.4,
+        "beats_bh_return": true,
+        "beats_bh_sharpe": true,
+        "win_rate_pct": 100.0,
+        "profit_factor": 99.0,
+        "avg_hold_days": 1211.0,
+        "start_idx": 22,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "rsi_reversion_50177b34",
+    "name": "RSI Reversion (period=21, oversold=20, overbought=80)",
+    "family": "rsi_reversion",
+    "params": {
+      "period": 21,
+      "oversold": 20,
+      "overbought": 80
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "Too few trades (mean=0.0 < 10 or min_mkt=0 < 6)",
+      "Exposure out of bounds (0.0%, require 10%..92%)",
+      "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+      "At 10 bps, CAGR=0.0%, Sharpe=0.00, retention=0.00",
+      "At 20 bps, mean return 0.0% <= 0%",
+      "Only 0.0% rolling starts positive (need >=65%)",
+      "Beat B&H on only 5.3% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=0.0%, Sharpe=0.00 < 0.60)",
+      "OOS/IS Sharpe retention 0.00 < 0.50",
+      "Unseen beat B&H Sharpe on 0/4 markets (need >=2)",
+      "Beat only 47.5% of same-exposure random entries (need >=75%)",
+      "Beat random median on 1/4 markets (need >=3)"
+    ],
+    "tests_passed_count": 0,
+    "summary": {
+      "mean_return_pct": 0.0,
+      "mean_bh_return_pct": 146.15,
+      "mean_excess_return_pct": -146.15,
+      "mean_cagr_pct": 0.0,
+      "mean_sharpe": 0.0,
+      "mean_bh_sharpe": 0.619,
+      "mean_max_dd_pct": 0.0,
+      "mean_trades": 0.0,
+      "mean_exposure_pct": 0.0,
+      "mean_win_rate_pct": 0.0,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": false,
+      "precheck_reasons": [
+        "Too few trades (mean=0.0 < 10 or min_mkt=0 < 6)",
+        "Exposure out of bounds (0.0%, require 10%..92%)"
+      ],
+      "fee_sweep": {
+        "passed": false,
+        "reasons": [
+          "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+          "At 10 bps, CAGR=0.0%, Sharpe=0.00, retention=0.00",
+          "At 20 bps, mean return 0.0% <= 0%"
+        ],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 0.0,
+            "mean_cagr_pct": 0.0,
+            "mean_sharpe": 0.0,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": 0.0,
+            "mean_cagr_pct": 0.0,
+            "mean_sharpe": 0.0,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": 0.0,
+            "mean_cagr_pct": 0.0,
+            "mean_sharpe": 0.0,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": 0.0,
+            "mean_cagr_pct": 0.0,
+            "mean_sharpe": 0.0,
+            "beats_bh_count": 0
+          }
+        ],
+        "sharpe_retention_10bps": 0.0
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 0.0,
+        "pct_beat_bh": 5.3,
+        "median_return_pct": 0.0,
+        "worst_return_pct": 0.0,
+        "best_return_pct": 0.0,
+        "passed": false,
+        "reasons": [
+          "Only 0.0% rolling starts positive (need >=65%)",
+          "Beat B&H on only 5.3% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 0.0,
+        "train_mean_sharpe": 0.0,
+        "unseen_mean_return_pct": 0.0,
+        "unseen_mean_sharpe": 0.0,
+        "sharpe_retention": 0.0,
+        "unseen_beats_bh_count": 0,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": 0.0,
+            "train_sharpe": 0.0,
+            "unseen_return_pct": 0.0,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.0,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": 0.0,
+            "train_sharpe": 0.0,
+            "unseen_return_pct": 0.0,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": 0.0,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 0.0,
+            "train_sharpe": 0.0,
+            "unseen_return_pct": 0.0,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": 0.0,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": 0.0,
+            "train_sharpe": 0.0,
+            "unseen_return_pct": 0.0,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": 0.0,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=0.0%, Sharpe=0.00 < 0.60)",
+          "OOS/IS Sharpe retention 0.00 < 0.50",
+          "Unseen beat B&H Sharpe on 0/4 markets (need >=2)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 47.5,
+        "beats_median_count": 1,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": 0.0,
+            "random_p50_sharpe": 0.073,
+            "random_p75_sharpe": 0.337,
+            "random_p95_sharpe": 0.753,
+            "percentile_rank": 46.0
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.0,
+            "random_p50_sharpe": 0.048,
+            "random_p75_sharpe": 0.366,
+            "random_p95_sharpe": 0.801,
+            "percentile_rank": 47.0
+          },
+          "NVDA": {
+            "strategy_sharpe": 0.0,
+            "random_p50_sharpe": 0.095,
+            "random_p75_sharpe": 0.425,
+            "random_p95_sharpe": 0.826,
+            "percentile_rank": 41.5
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.0,
+            "random_p50_sharpe": -0.053,
+            "random_p75_sharpe": 0.267,
+            "random_p95_sharpe": 0.708,
+            "percentile_rank": 55.5
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 47.5% of same-exposure random entries (need >=75%)",
+          "Beat random median on 1/4 markets (need >=3)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": 0.0,
+        "bh_return_pct": 43.49,
+        "excess_return_pct": -43.49,
+        "cagr_pct": 0.0,
+        "bh_cagr_pct": 7.67,
+        "sharpe": 0.0,
+        "bh_sharpe": 0.4,
+        "max_drawdown_pct": 0.0,
+        "bh_max_drawdown_pct": -37.34,
+        "trades": 0,
+        "exposure_pct": 0.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 0.0,
+        "profit_factor": 0.0,
+        "avg_hold_days": 0.0,
+        "start_idx": 22,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 0.0,
+        "bh_return_pct": 98.2,
+        "excess_return_pct": -98.2,
+        "cagr_pct": 0.0,
+        "bh_cagr_pct": 15.02,
+        "sharpe": 0.0,
+        "bh_sharpe": 0.639,
+        "max_drawdown_pct": 0.0,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 0,
+        "exposure_pct": 0.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 0.0,
+        "profit_factor": 0.0,
+        "avg_hold_days": 0.0,
+        "start_idx": 22,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 0.0,
+        "bh_return_pct": 392.98,
+        "excess_return_pct": -392.98,
+        "cagr_pct": 0.0,
+        "bh_cagr_pct": 38.58,
+        "sharpe": 0.0,
+        "bh_sharpe": 0.874,
+        "max_drawdown_pct": 0.0,
+        "bh_max_drawdown_pct": -62.73,
+        "trades": 0,
+        "exposure_pct": 0.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 0.0,
+        "profit_factor": 0.0,
+        "avg_hold_days": 0.0,
+        "start_idx": 22,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 0.0,
+        "bh_return_pct": 49.94,
+        "excess_return_pct": -49.94,
+        "cagr_pct": 0.0,
+        "bh_cagr_pct": 8.64,
+        "sharpe": 0.0,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": 0.0,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 0,
+        "exposure_pct": 0.0,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 0.0,
+        "profit_factor": 0.0,
+        "avg_hold_days": 0.0,
+        "start_idx": 22,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "donchian_f0b65065",
+    "name": "Donchian Breakout (entry_len=20, exit_len=15)",
+    "family": "donchian",
+    "params": {
+      "entry_len": 20,
+      "exit_len": 15
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "Beat B&H on only 28.2% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=11.9%, Sharpe=0.48 < 0.60)",
+      "Beat only 63.2% of same-exposure random entries (need >=75%)"
+    ],
+    "tests_passed_count": 1,
+    "summary": {
+      "mean_return_pct": 64.02,
+      "mean_bh_return_pct": 150.38,
+      "mean_excess_return_pct": -86.37,
+      "mean_cagr_pct": 9.79,
+      "mean_sharpe": 0.556,
+      "mean_bh_sharpe": 0.614,
+      "mean_max_dd_pct": -24.67,
+      "mean_trades": 18.0,
+      "mean_exposure_pct": 52.9,
+      "mean_win_rate_pct": 44.4,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": true,
+      "precheck_reasons": [],
+      "fee_sweep": {
+        "passed": true,
+        "reasons": [],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 64.02,
+            "mean_cagr_pct": 9.79,
+            "mean_sharpe": 0.556,
+            "beats_bh_count": 2
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": 62.27,
+            "mean_cagr_pct": 9.55,
+            "mean_sharpe": 0.543,
+            "beats_bh_count": 1
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": 59.41,
+            "mean_cagr_pct": 9.15,
+            "mean_sharpe": 0.521,
+            "beats_bh_count": 1
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": 53.83,
+            "mean_cagr_pct": 8.35,
+            "mean_sharpe": 0.476,
+            "beats_bh_count": 1
+          }
+        ],
+        "sharpe_retention_10bps": 0.937
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 93.1,
+        "pct_beat_bh": 28.2,
+        "median_return_pct": 25.81,
+        "worst_return_pct": -21.77,
+        "best_return_pct": 243.36,
+        "passed": false,
+        "reasons": [
+          "Beat B&H on only 28.2% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 53.05,
+        "train_mean_sharpe": 0.583,
+        "unseen_mean_return_pct": 11.94,
+        "unseen_mean_sharpe": 0.482,
+        "sharpe_retention": 0.828,
+        "unseen_beats_bh_count": 2,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": 15.33,
+            "train_sharpe": 0.375,
+            "unseen_return_pct": 14.7,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.434,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": 3.29,
+            "train_sharpe": 0.15,
+            "unseen_return_pct": 21.8,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": 0.665,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 169.88,
+            "train_sharpe": 1.043,
+            "unseen_return_pct": -1.67,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": 0.117,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": 23.68,
+            "train_sharpe": 0.764,
+            "unseen_return_pct": 12.92,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": 0.714,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=11.9%, Sharpe=0.48 < 0.60)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 63.2,
+        "beats_median_count": 3,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": 0.4,
+            "random_p50_sharpe": 0.278,
+            "random_p75_sharpe": 0.462,
+            "random_p95_sharpe": 0.664,
+            "percentile_rank": 67.0
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.359,
+            "random_p50_sharpe": 0.468,
+            "random_p75_sharpe": 0.667,
+            "random_p95_sharpe": 1.023,
+            "percentile_rank": 35.0
+          },
+          "NVDA": {
+            "strategy_sharpe": 0.712,
+            "random_p50_sharpe": 0.635,
+            "random_p75_sharpe": 0.856,
+            "random_p95_sharpe": 1.214,
+            "percentile_rank": 58.5
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.755,
+            "random_p50_sharpe": 0.407,
+            "random_p75_sharpe": 0.597,
+            "random_p95_sharpe": 0.798,
+            "percentile_rank": 92.5
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 63.2% of same-exposure random entries (need >=75%)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": 32.29,
+        "bh_return_pct": 45.99,
+        "excess_return_pct": -13.7,
+        "cagr_pct": 5.88,
+        "bh_cagr_pct": 8.03,
+        "sharpe": 0.4,
+        "bh_sharpe": 0.398,
+        "max_drawdown_pct": -25.22,
+        "bh_max_drawdown_pct": -37.44,
+        "trades": 18,
+        "exposure_pct": 51.4,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": true,
+        "win_rate_pct": 38.9,
+        "profit_factor": 1.7,
+        "avg_hold_days": 35.2,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 25.81,
+        "bh_return_pct": 100.71,
+        "excess_return_pct": -74.9,
+        "cagr_pct": 4.8,
+        "bh_cagr_pct": 15.29,
+        "sharpe": 0.359,
+        "bh_sharpe": 0.634,
+        "max_drawdown_pct": -21.54,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 18,
+        "exposure_pct": 50.3,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 50.0,
+        "profit_factor": 1.6,
+        "avg_hold_days": 34.4,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 157.54,
+        "bh_return_pct": 403.17,
+        "excess_return_pct": -245.63,
+        "cagr_pct": 21.31,
+        "bh_cagr_pct": 39.09,
+        "sharpe": 0.712,
+        "bh_sharpe": 0.861,
+        "max_drawdown_pct": -40.36,
+        "bh_max_drawdown_pct": -63.72,
+        "trades": 17,
+        "exposure_pct": 53.5,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 41.2,
+        "profit_factor": 2.71,
+        "avg_hold_days": 38.8,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 40.43,
+        "bh_return_pct": 51.67,
+        "excess_return_pct": -11.23,
+        "cagr_pct": 7.18,
+        "bh_cagr_pct": 8.88,
+        "sharpe": 0.755,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": -11.57,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 19,
+        "exposure_pct": 56.6,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": true,
+        "win_rate_pct": 47.4,
+        "profit_factor": 2.96,
+        "avg_hold_days": 36.8,
+        "start_idx": 20,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
+  },
+  {
+    "id": "cci_6b632270",
+    "name": "CCI (period=10, entry_level=75, exit_level=50, mode=trend)",
+    "family": "cci",
+    "params": {
+      "period": 10,
+      "entry_level": 75,
+      "exit_level": 50,
+      "mode": "trend"
+    },
+    "origin": "randomized",
+    "verdict": "FAIL",
+    "death_reasons": [
+      "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+      "At 10 bps, CAGR=1.1%, Sharpe=0.06, retention=0.23",
+      "At 20 bps, mean return -8.6% <= 0%",
+      "Beat B&H on only 26.6% rolling starts (need >=50%)",
+      "Unseen OOS weak (return=3.0%, Sharpe=0.32 < 0.60)",
+      "Beat only 40.4% of same-exposure random entries (need >=75%)",
+      "Beat random median on 2/4 markets (need >=3)"
+    ],
+    "tests_passed_count": 0,
+    "summary": {
+      "mean_return_pct": 25.82,
+      "mean_bh_return_pct": 150.38,
+      "mean_excess_return_pct": -124.57,
+      "mean_cagr_pct": 4.02,
+      "mean_sharpe": 0.261,
+      "mean_bh_sharpe": 0.614,
+      "mean_max_dd_pct": -28.62,
+      "mean_trades": 88.5,
+      "mean_exposure_pct": 41.0,
+      "mean_win_rate_pct": 43.5,
+      "beats_bh_markets": 0
+    },
+    "stress_tests": {
+      "precheck_passed": true,
+      "precheck_reasons": [],
+      "fee_sweep": {
+        "passed": false,
+        "reasons": [
+          "At 2 bps, beat B&H on only 0/4 markets (need >=2)",
+          "At 10 bps, CAGR=1.1%, Sharpe=0.06, retention=0.23",
+          "At 20 bps, mean return -8.6% <= 0%"
+        ],
+        "tiers": [
+          {
+            "fee_bps": 2.0,
+            "mean_return_pct": 25.82,
+            "mean_cagr_pct": 4.02,
+            "mean_sharpe": 0.261,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 5.0,
+            "mean_return_pct": 19.28,
+            "mean_cagr_pct": 2.9,
+            "mean_sharpe": 0.185,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 10.0,
+            "mean_return_pct": 9.14,
+            "mean_cagr_pct": 1.05,
+            "mean_sharpe": 0.059,
+            "beats_bh_count": 0
+          },
+          {
+            "fee_bps": 20.0,
+            "mean_return_pct": -8.63,
+            "mean_cagr_pct": -2.53,
+            "mean_sharpe": -0.195,
+            "beats_bh_count": 0
+          }
+        ],
+        "sharpe_retention_10bps": 0.226
+      },
+      "rolling_starts": {
+        "windows_tested": 188,
+        "pct_positive": 84.0,
+        "pct_beat_bh": 26.6,
+        "median_return_pct": 14.35,
+        "worst_return_pct": -29.81,
+        "best_return_pct": 140.6,
+        "passed": false,
+        "reasons": [
+          "Beat B&H on only 26.6% rolling starts (need >=50%)"
+        ]
+      },
+      "train_vs_unseen": {
+        "train_mean_return_pct": 37.11,
+        "train_mean_sharpe": 0.18,
+        "unseen_mean_return_pct": 2.98,
+        "unseen_mean_sharpe": 0.315,
+        "sharpe_retention": 1.749,
+        "unseen_beats_bh_count": 2,
+        "per_market": {
+          "MSFT": {
+            "train_return_pct": -28.01,
+            "train_sharpe": -0.622,
+            "unseen_return_pct": 27.62,
+            "unseen_bh_return_pct": 17.05,
+            "unseen_sharpe": 0.794,
+            "unseen_bh_sharpe": 0.412,
+            "split_date": "2024-11-25"
+          },
+          "AAPL": {
+            "train_return_pct": 2.06,
+            "train_sharpe": 0.121,
+            "unseen_return_pct": -0.87,
+            "unseen_bh_return_pct": 53.56,
+            "unseen_sharpe": 0.048,
+            "unseen_bh_sharpe": 0.878,
+            "split_date": "2024-11-25"
+          },
+          "NVDA": {
+            "train_return_pct": 174.93,
+            "train_sharpe": 1.199,
+            "unseen_return_pct": -29.05,
+            "unseen_bh_return_pct": 5.11,
+            "unseen_sharpe": -0.562,
+            "unseen_bh_sharpe": 0.34,
+            "split_date": "2024-11-25"
+          },
+          "^GSPC": {
+            "train_return_pct": -0.55,
+            "train_sharpe": 0.023,
+            "unseen_return_pct": 14.21,
+            "unseen_bh_return_pct": 19.82,
+            "unseen_sharpe": 0.981,
+            "unseen_bh_sharpe": 0.621,
+            "split_date": "2024-11-25"
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Unseen OOS weak (return=3.0%, Sharpe=0.32 < 0.60)"
+        ]
+      },
+      "random_baseline": {
+        "trials_per_market": 200,
+        "mean_percentile_rank": 40.4,
+        "beats_median_count": 2,
+        "per_market": {
+          "MSFT": {
+            "strategy_sharpe": -0.02,
+            "random_p50_sharpe": 0.227,
+            "random_p75_sharpe": 0.462,
+            "random_p95_sharpe": 0.703,
+            "percentile_rank": 23.0
+          },
+          "AAPL": {
+            "strategy_sharpe": 0.111,
+            "random_p50_sharpe": 0.373,
+            "random_p75_sharpe": 0.56,
+            "random_p95_sharpe": 0.882,
+            "percentile_rank": 24.0
+          },
+          "NVDA": {
+            "strategy_sharpe": 0.598,
+            "random_p50_sharpe": 0.509,
+            "random_p75_sharpe": 0.748,
+            "random_p95_sharpe": 1.086,
+            "percentile_rank": 59.5
+          },
+          "^GSPC": {
+            "strategy_sharpe": 0.357,
+            "random_p50_sharpe": 0.32,
+            "random_p75_sharpe": 0.611,
+            "random_p95_sharpe": 0.974,
+            "percentile_rank": 55.0
+          }
+        },
+        "passed": false,
+        "reasons": [
+          "Beat only 40.4% of same-exposure random entries (need >=75%)",
+          "Beat random median on 2/4 markets (need >=3)"
+        ]
+      }
+    },
+    "per_market": {
+      "MSFT": {
+        "total_return_pct": -8.13,
+        "bh_return_pct": 45.99,
+        "excess_return_pct": -54.12,
+        "cagr_pct": -1.72,
+        "bh_cagr_pct": 8.03,
+        "sharpe": -0.02,
+        "bh_sharpe": 0.398,
+        "max_drawdown_pct": -36.63,
+        "bh_max_drawdown_pct": -37.44,
+        "trades": 90,
+        "exposure_pct": 39.3,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 44.4,
+        "profit_factor": 0.99,
+        "avg_hold_days": 5.4,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "AAPL": {
+        "total_return_pct": 2.74,
+        "bh_return_pct": 100.71,
+        "excess_return_pct": -97.98,
+        "cagr_pct": 0.55,
+        "bh_cagr_pct": 15.29,
+        "sharpe": 0.111,
+        "bh_sharpe": 0.634,
+        "max_drawdown_pct": -21.87,
+        "bh_max_drawdown_pct": -33.43,
+        "trades": 87,
+        "exposure_pct": 40.6,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 40.2,
+        "profit_factor": 1.08,
+        "avg_hold_days": 5.8,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "NVDA": {
+        "total_return_pct": 95.08,
+        "bh_return_pct": 403.17,
+        "excess_return_pct": -308.09,
+        "cagr_pct": 14.62,
+        "bh_cagr_pct": 39.09,
+        "sharpe": 0.598,
+        "bh_sharpe": 0.861,
+        "max_drawdown_pct": -41.96,
+        "bh_max_drawdown_pct": -63.72,
+        "trades": 91,
+        "exposure_pct": 40.8,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 42.9,
+        "profit_factor": 1.5,
+        "avg_hold_days": 5.5,
+        "start_idx": 20,
+        "end_idx": 1254
+      },
+      "^GSPC": {
+        "total_return_pct": 13.58,
+        "bh_return_pct": 51.67,
+        "excess_return_pct": -38.09,
+        "cagr_pct": 2.63,
+        "bh_cagr_pct": 8.88,
+        "sharpe": 0.357,
+        "bh_sharpe": 0.563,
+        "max_drawdown_pct": -14.02,
+        "bh_max_drawdown_pct": -25.43,
+        "trades": 86,
+        "exposure_pct": 43.4,
+        "beats_bh_return": false,
+        "beats_bh_sharpe": false,
+        "win_rate_pct": 46.5,
+        "profit_factor": 1.26,
+        "avg_hold_days": 6.2,
+        "start_idx": 20,
+        "end_idx": 1254
+      }
+    },
+    "run_id": "20261126-0802",
+    "evaluated_at_utc": "2026-11-26T07:02:28Z",
+    "evaluated_at_ljubljana": "2026-11-26 08:02 CET",
+    "data_last_date": "2026-11-25"
   }
 ]
