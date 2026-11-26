@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BACKTEST-LAB // Paper Trading Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27><rect width=%2716%27 height=%2716%27 rx=%273%27 fill=%27%23080c11%27/><path d=%27M3 11l3-4 3 2 4-5%27 stroke=%27%2300d395%27 stroke-width=%272%27 fill=%27none%27/></svg>">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="brand">
+        <span class="pulse-dot"></span>
+        <span class="brand-title">BACKTEST-LAB</span>
+        <span class="brand-sub">// PAPER RESEARCH TERMINAL</span>
+      </div>
+      <div class="badge-row">
+        <span class="badge badge-warn">PAPER ONLY</span>
+        <span class="badge badge-neutral">2 BPS/SIDE</span>
+        <span class="badge badge-neutral">SIGNAL T-CLOSE &rarr; T+1 OPEN</span>
+        <span class="badge badge-neutral">4 STRESS TESTS &middot; REJECT BY DEFAULT</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="meta-kv">
+        <span class="meta-label">LAST RUN</span>
+        <span class="meta-val" id="meta-last-run">Loading...</span>
+      </div>
+      <div class="meta-kv">
+        <span class="meta-label">DATA THROUGH</span>
+        <span class="meta-val" id="meta-data-through">--</span>
+      </div>
+      <a class="doc-link" href="LAB_RULES.md" target="_blank" rel="noopener">LAB_RULES.md</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- KPI STRIP -->
+    <section class="kpi-grid" id="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">IDEAS EVALUATED</div>
+        <div class="kpi-value" id="kpi-total">--</div>
+        <div class="kpi-sub" id="kpi-total-sub">13 strategy families</div>
+      </div>
+      <div class="kpi-card kpi-survivors">
+        <div class="kpi-label">PAPER SURVIVORS</div>
+        <div class="kpi-value" id="kpi-survivors">--</div>
+        <div class="kpi-sub">Passed all 4 stress tests</div>
+      </div>
+      <div class="kpi-card kpi-dead">
+        <div class="kpi-label">GRAVEYARD (DEAD)</div>
+        <div class="kpi-value" id="kpi-dead">--</div>
+        <div class="kpi-sub" id="kpi-dead-rate">Rejected by default judge</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">TOP SHARPE (IN-SAMPLE)</div>
+        <div class="kpi-value" id="kpi-top-sharpe">--</div>
+        <div class="kpi-sub" id="kpi-top-name">--</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">CLOSEST NEAR-MISS</div>
+        <div class="kpi-value" id="kpi-nearmiss">--</div>
+        <div class="kpi-sub" id="kpi-nearmiss-sub">--</div>
+      </div>
+    </section>
+
+    <!-- TERMINAL CHART & REPLAY WORKSPACE -->
+    <section class="panel chart-panel">
+      <div class="panel-header chart-controls">
+        <div class="control-group">
+          <label class="ctrl-label" for="strategy-select">STRATEGY</label>
+          <select id="strategy-select" class="select-input"></select>
+          <div class="market-tabs" id="market-tabs"></div>
+        </div>
+        <div class="control-group replay-controls">
+          <button id="btn-reset" class="btn-ctrl" title="Reset to start">&#9198;</button>
+          <button id="btn-step-back" class="btn-ctrl" title="Step back 1 bar">&#9664;</button>
+          <button id="btn-play" class="btn-ctrl btn-primary" title="Play / Pause replay">&#9654; REPLAY</button>
+          <button id="btn-step-fwd" class="btn-ctrl" title="Step forward 1 bar">&#9654;</button>
+          <button id="btn-end" class="btn-ctrl" title="Jump to latest bar">&#9197;</button>
+          <select id="speed-select" class="select-input select-sm" title="Replay speed">
+            <option value="1">1x</option>
+            <option value="5" selected>5x</option>
+            <option value="15">15x</option>
+            <option value="40">40x</option>
+          </select>
+          <select id="zoom-select" class="select-input select-sm" title="Visible bar window">
+            <option value="all" selected>Full 5Y</option>
+            <option value="500">Last 2Y</option>
+            <option value="252">Last 1Y</option>
+            <option value="126">Last 6M</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="replay-scrubber-row">
+        <input type="range" id="replay-slider" min="1" max="100" value="100" />
+        <div class="hud-readout" id="hud-readout">
+          <span>DATE <strong id="hud-date">--</strong></span>
+          <span>O <strong id="hud-open">--</strong></span>
+          <span>H <strong id="hud-high">--</strong></span>
+          <span>L <strong id="hud-low">--</strong></span>
+          <span>C <strong id="hud-close">--</strong></span>
+          <span>POS <strong id="hud-pos" class="tag-flat">FLAT</strong></span>
+          <span>STRAT <strong id="hud-strat-eq">--</strong></span>
+          <span>B&amp;H <strong id="hud-bh-eq">--</strong></span>
+          <span>TRADES <strong id="hud-trades">--</strong></span>
+          <span id="hud-ind-wrap">IND <strong id="hud-ind">--</strong></span>
+        </div>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="terminal-canvas"></canvas>
+        <div id="chart-tooltip" class="chart-tooltip hidden"></div>
+      </div>
+    </section>
+
+    <!-- STRESS TEST INSPECTOR + PAPER SURVIVORS -->
+    <section class="two-col">
+      <div class="panel" id="stress-panel">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">STRESS-TEST INSPECTOR</h2>
+            <p class="panel-sub" id="stress-subtitle">Select a strategy to inspect all 4 stress gates</p>
+          </div>
+          <span id="stress-verdict-badge" class="verdict-pill">--</span>
+        </div>
+        <div class="panel-body" id="stress-body"></div>
+      </div>
+
+      <div class="panel" id="survivors-panel">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">PAPER-TRADING SURVIVORS</h2>
+            <p class="panel-sub">Strategies passing all 4 gates, tracked forward on new daily bars</p>
+          </div>
+          <span class="badge badge-neutral" id="survivors-count-badge">0 ACTIVE</span>
+        </div>
+        <div class="panel-body" id="survivors-body"></div>
+      </div>
+    </section>
+
+    <!-- RESULTS MATRIX (STRATEGY x MARKET) -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">RESULTS MATRIX &mdash; STRATEGY &times; MARKET (2 BPS/SIDE)</h2>
+          <p class="panel-sub">Cells turn <span class="txt-green">green</span> when strategy total return beat Buy &amp; Hold after fees. Click any cell to load into replay chart.</p>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table class="data-table matrix-table" id="matrix-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">UNIVERSE LEADERBOARD</h2>
+          <p class="panel-sub">All evaluated ideas ranked by survival verdict, stress tests passed, and mean Sharpe across MSFT, AAPL, NVDA, ^GSPC</p>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table class="data-table" id="leaderboard-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>STATUS</th>
+              <th>STRATEGY</th>
+              <th>FAMILY</th>
+              <th class="num">MEAN RET</th>
+              <th class="num">B&amp;H RET</th>
+              <th class="num">EXCESS</th>
+              <th class="num">SHARPE</th>
+              <th class="num">OOS SHARPE</th>
+              <th class="num">MAX DD</th>
+              <th class="num">TRADES</th>
+              <th class="num">EXP %</th>
+              <th>STRESS GATES (FEE / ROLL / OOS / RAND)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- JOURNAL / GRAVEYARD -->
+    <section class="panel">
+      <div class="panel-header journal-header">
+        <div>
+          <h2 class="panel-title">RESEARCH JOURNAL &amp; GRAVEYARD</h2>
+          <p class="panel-sub">Every tested idea logged with its exact failure reasons</p>
+        </div>
+        <div class="journal-filters">
+          <input type="text" id="journal-search" class="text-input" placeholder="Search strategy or reason..." />
+          <select id="journal-filter" class="select-input select-sm">
+            <option value="all">All Ideas</option>
+            <option value="PASS">Survivors Only</option>
+            <option value="FAIL">Graveyard Only</option>
+            <option value="nearmiss">Near-Misses (&ge;1 test)</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table class="data-table" id="journal-table">
+          <thead>
+            <tr>
+              <th>RUN</th>
+              <th>VERDICT</th>
+              <th>IDEA</th>
+              <th class="num">RET %</th>
+              <th class="num">SHARPE</th>
+              <th class="num">BEAT B&amp;H</th>
+              <th class="num">GATES</th>
+              <th>REASON IT SURVIVED OR DIED</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Paper only, in-sample results, not financial advice.</span>
+    <span>Real daily OHLC bars via Yahoo Finance v8 &middot; Zero broker connections &middot; Zero real trades &middot; <a href="journal/JOURNAL.md" target="_blank" rel="noopener">JOURNAL.md</a></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

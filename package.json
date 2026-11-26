@@ -1,0 +1,10 @@
+{
+  "name": "backtest-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Paper-only self-improving stock backtest lab and trading terminal dashboard",
+  "scripts": {
+    "lab": "python3 lab.py",
+    "lab:local": "python3 lab.py --no-push"
+  }
+}
