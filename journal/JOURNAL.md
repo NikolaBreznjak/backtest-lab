@@ -1,9 +1,9 @@
 # Backtest Lab Journal & Graveyard
 
-- **Last Updated:** 2026-11-27 08:02 CET (`2026-11-27T07:02:10Z`)
-- **Total Ideas Evaluated:** 66
+- **Last Updated:** 2026-11-28 08:04 CET (`2026-11-28T07:04:18Z`)
+- **Total Ideas Evaluated:** 76
 - **Paper-Trading Survivors:** 0
-- **Graveyard (Rejected):** 66
+- **Graveyard (Rejected):** 76
 
 > Paper only · In-sample and walk-forward backtest results · Not financial advice.
 
@@ -15,6 +15,16 @@ _No strategies have survived all 4 stress tests yet. Most ideas die here, which 
 
 | Run | Idea | Verdict | Mean Ret | Mean Sharpe | Beat B&H | Reason / Notes |
 |---|---|---|---:|---:|---:|---|
+| 20261128-0804 | Donchian Breakout (entry_len=55, exit_len=15) | **FAIL** | 59.04% | 0.437 | 0/4 | At 2 bps, beat B&H on only 0/4 markets (need >=2); At 10 bps, CAGR=7.9%, Sharpe=0.40, retention=0.92; Beat B&H on only 3.8% rolling starts (need >=50%); Unseen OOS weak (return=5.2%, Sharpe=0.21 < 0.60); OOS/IS Sharpe retention 0.37 < 0.50; Unseen beat B&H Sharpe on 1/4 markets (need >=2); Beat only 45.9% of same-exposure random entries (need >=75%); Beat random median on 1/4 markets (need >=3) |
+| 20261128-0804 | Bollinger (period=10, num_std=2.5, mode=reversion) | **FAIL** | 16.94% | 0.615 | 0/4 | Too few trades (mean=5.8 < 10 or min_mkt=3 < 6); Exposure out of bounds (2.8%, require 10%..92%) |
+| 20261128-0804 | SMA Cross (fast=8, slow=120) | **FAIL** | 175.75% | 0.730 | 0/4 | Too few trades (mean=8.8 < 10 or min_mkt=7 < 6); At 2 bps, beat B&H on only 1/4 markets (need >=2); Beat B&H on only 26.2% rolling starts (need >=50%); Unseen OOS weak (return=4.8%, Sharpe=0.27 < 0.60); OOS/IS Sharpe retention 0.26 < 0.50; Unseen beat B&H Sharpe on 1/4 markets (need >=2); Beat only 45.0% of same-exposure random entries (need >=75%); Beat random median on 2/4 markets (need >=3) |
+| 20261128-0804 | SMA Cross (fast=15, slow=150) | **FAIL** | 172.51% | 0.730 | 0/4 | Too few trades (mean=6.2 < 10 or min_mkt=5 < 6); At 2 bps, beat B&H on only 0/4 markets (need >=2); Beat B&H on only 13.4% rolling starts (need >=50%); Unseen OOS weak (return=7.5%, Sharpe=0.28 < 0.60); OOS/IS Sharpe retention 0.27 < 0.50; Unseen beat B&H Sharpe on 0/4 markets (need >=2); Beat only 36.6% of same-exposure random entries (need >=75%); Beat random median on 1/4 markets (need >=3) |
+| 20261128-0804 | Turn-of-Month (days_before_eom=2, days_into_bom=5) | **FAIL** | 1.47% | 0.047 | 0/4 | At 2 bps, beat B&H on only 0/4 markets (need >=2); At 10 bps, CAGR=-1.9%, Sharpe=-0.08, retention=-1.79; At 20 bps, mean return -17.9% <= 0%; Beat B&H on only 13.3% rolling starts (need >=50%); Unseen OOS weak (return=6.4%, Sharpe=0.25 < 0.60); OOS/IS Sharpe retention 0.00 < 0.50; Unseen beat B&H Sharpe on 1/4 markets (need >=2); Beat only 24.5% of same-exposure random entries (need >=75%); Beat random median on 0/4 markets (need >=3) |
+| 20261128-0804 | EMA Cross (fast=12, slow=35) | **FAIL** | 75.58% | 0.532 | 0/4 | At 2 bps, beat B&H on only 0/4 markets (need >=2); At 10 bps, CAGR=10.0%, Sharpe=0.50, retention=0.94; Beat B&H on only 14.9% rolling starts (need >=50%); Unseen OOS weak (return=5.8%, Sharpe=0.36 < 0.60); Unseen beat B&H Sharpe on 1/4 markets (need >=2); Beat only 49.9% of same-exposure random entries (need >=75%); Beat random median on 2/4 markets (need >=3) |
+| 20261128-0804 | Supertrend (atr_period=7, multiplier=3.0) | **FAIL** | 93.98% | 0.615 | 0/4 | Beat B&H on only 23.4% rolling starts (need >=50%); Unseen OOS weak (return=12.1%, Sharpe=0.46 < 0.60); Unseen beat B&H Sharpe on 1/4 markets (need >=2); Beat only 66.8% of same-exposure random entries (need >=75%) |
+| 20261128-0804 | CCI (period=10, entry_level=125, exit_level=-50, mode=reversion) | **FAIL** | 47.30% | 0.496 | 0/4 | At 2 bps, beat B&H on only 1/4 markets (need >=2); At 10 bps, CAGR=6.0%, Sharpe=0.38, retention=0.77; Beat B&H on only 47.9% rolling starts (need >=50%); Beat only 71.0% of same-exposure random entries (need >=75%) |
+| 20261128-0804 | Donchian Breakout (entry_len=15, exit_len=8) | **FAIL** | 88.61% | 0.690 | 0/4 | Beat B&H on only 25.0% rolling starts (need >=50%); Unseen OOS weak (return=9.7%, Sharpe=0.46 < 0.60) |
+| 20261128-0804 | Stochastic (k_period=14, d_period=5, oversold=25, overbought=70) | **FAIL** | 13.95% | 0.319 | 0/4 | At 2 bps, beat B&H on only 1/4 markets (need >=2); At 10 bps, CAGR=1.8%, Sharpe=0.28, retention=0.86; Beat B&H on only 19.1% rolling starts (need >=50%); Unseen OOS weak (return=-1.9%, Sharpe=0.24 < 0.60); Beat only 57.5% of same-exposure random entries (need >=75%) |
 | 20261127-0802 | ADX / DMI (period=10, adx_threshold=30) | **FAIL** | 59.60% | 0.462 | 0/4 | At 10 bps, CAGR=7.0%, Sharpe=0.37, retention=0.81; Beat B&H on only 38.8% rolling starts (need >=50%); Unseen OOS weak (return=5.7%, Sharpe=0.20 < 0.60); OOS/IS Sharpe retention 0.33 < 0.50; Beat only 61.6% of same-exposure random entries (need >=75%) |
 | 20261127-0802 | Parabolic SAR (af_start=0.02, af_step=0.01, af_max=0.15) | **FAIL** | 31.67% | 0.400 | 0/4 | At 2 bps, beat B&H on only 0/4 markets (need >=2); At 10 bps, CAGR=4.3%, Sharpe=0.32, retention=0.81; Beat B&H on only 38.8% rolling starts (need >=50%); Unseen OOS weak (return=14.9%, Sharpe=0.47 < 0.60); Beat only 42.5% of same-exposure random entries (need >=75%); Beat random median on 1/4 markets (need >=3) |
 | 20261127-0802 | Z-Score Reversion (period=20, entry_z=1.75, exit_z=-0.5) | **FAIL** | 57.48% | 0.601 | 0/4 | Beat B&H on only 22.3% rolling starts (need >=50%); Unseen OOS weak (return=13.4%, Sharpe=0.38 < 0.60); OOS/IS Sharpe retention 0.48 < 0.50; Unseen beat B&H Sharpe on 1/4 markets (need >=2) |

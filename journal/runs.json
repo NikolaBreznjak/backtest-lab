@@ -48,5 +48,15 @@
     "total_ideas": 66,
     "total_survivors": 0,
     "elapsed_seconds": 6.35
+  },
+  {
+    "run_id": "20261128-0804",
+    "run_at_utc": "2026-11-28T07:04:18Z",
+    "run_at_ljubljana": "2026-11-28 08:04 CET",
+    "new_ideas_tested": 10,
+    "new_survivors": 0,
+    "total_ideas": 76,
+    "total_survivors": 0,
+    "elapsed_seconds": 6.07
   }
 ]
